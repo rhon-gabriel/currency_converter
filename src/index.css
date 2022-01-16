@@ -5,8 +5,11 @@ body,
 #root,
 .App {
   height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  position: relative;
   font-family: "Montserrat", sans-serif;
   background: #ff00cc; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #ff00cc, #333399); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #ff00cc, #333399); 
+  background: -webkit-linear-gradient(to bottom, #ff00cc, #211235); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #ff00cc, #211235); 
 }
