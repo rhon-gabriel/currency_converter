@@ -1,0 +1,12 @@
+@import "~antd/dist/antd.css";
+
+html,
+body,
+#root,
+.App {
+  height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  background: #ff00cc; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #ff00cc, #333399); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #ff00cc, #333399); 
+}
