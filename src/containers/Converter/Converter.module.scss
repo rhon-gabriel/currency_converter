@@ -1,20 +1,66 @@
 .container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  :global {
+    .ant-form-item-control-input-content {
+      width: 350px;
+    }
+    .ant-btn-primary {
+      width: 100%;
+      border-radius: 5px;
+      height: 40px;
+      background-color: #211235;
+      color: #fff;
+    }
+    .ant-form-inline .ant-form-item {
+      margin-bottom: 15px;
+    }
+    .ant-form-item .ant-select {
+      width: 45%;
+    }
+    .ant-select-arrow {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 500px) {
     :global {
       .ant-form-item-control-input-content {
-        width: 350px;
+        width: 250px;
       }
-    }
-    @media screen and (max-width: 500px) {
-      :global {
-        .ant-form-item-control-input-content {
-          width: 250px;
-        }
+      .ant-form-item .ant-select {
+        width: 100%;
       }
     }
   }
-  
+  .text {
+    font-size: large;
+    font-weight: 600;
+    text-align: center;
+  }
+  .arrow {
+    margin: 0 10px;
+    @media screen and (max-width: 500px) {
+      display: none;
+    }
+  }
+
+  .close {
+    position: absolute;
+    background: rgb(238, 89, 89);
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-weight: 35px;
+    top: -15px;
+    right: -15px;
+  }
+}
+
+canvas {
+  @media screen and (max-width: 500px) {
+    width: 260px;
+  }
+}

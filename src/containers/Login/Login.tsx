@@ -7,7 +7,7 @@ import styles from "./Login.module.scss";
 const Login: FC = () => {
   const [isLogged, setIsLogged] = useState(false);
   const navigate = useNavigate();
-  const pswValidRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*]).{8,20}$/;
+  const pswValidRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*.,-]).{8,20}$/;
   const userNameValidRegex = /^.{5,20}$/;
 
   const onFinish = (values: any) => {
@@ -31,28 +31,36 @@ const Login: FC = () => {
 
   useEffect(() => {
     isLogged && navigate("/converter");
-  }, [isLogged]);
+  }, [isLogged]); // eslint-disable-line
 
   const isLocalLogedIn = localStorage.getItem("isLogged");
+
+  const signOut = () => {
+    localStorage.removeItem("isLogged");
+    window.location.reload();
+  };
 
   return (
     <div className={styles.container}>
       {isLocalLogedIn ? (
-        <Button type="text" onClick={() => navigate("/converter")}>
-          Go to Currency Converter
-        </Button>
+        <>
+          <p className={styles.text}>You are logged in</p>
+          <div className={styles.button}>
+            <Button onClick={() => navigate("/converter")}>
+              Currency Converter
+            </Button>
+          </div>
+          <div className={styles.button}>
+            <Button onClick={signOut}>Sign out</Button>
+          </div>
+        </>
       ) : (
         <CardMedium>
           <div>
-            <p>Login</p>
-            <Form
-              name="basic-login"
-              initialValues={{
-                remember: true,
-              }}
-              onFinish={onFinish}
-              autoComplete="off"
-            >
+            <p className={styles.text} style={{ textAlign: "left" }}>
+              LOGIN
+            </p>
+            <Form name="basic-login" onFinish={onFinish} autoComplete="off">
               <Form.Item
                 name="username"
                 rules={[
@@ -62,7 +70,7 @@ const Login: FC = () => {
                   },
                 ]}
               >
-                <Input size="large" />
+                <Input size="large" placeholder="Username" data-testid="username"/>
               </Form.Item>
 
               <Form.Item
@@ -74,12 +82,12 @@ const Login: FC = () => {
                   },
                 ]}
               >
-                <Input.Password size="large" />
+                <Input.Password size="large"  placeholder="Password" data-testid="password"/>
               </Form.Item>
 
               <Form.Item>
-                <Button type="primary" htmlType="submit">
-                  Submit
+                <Button type="primary" htmlType="submit"  data-testid="login">
+                  Login
                 </Button>
               </Form.Item>
             </Form>
